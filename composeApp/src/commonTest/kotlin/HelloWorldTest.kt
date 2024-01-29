@@ -1,9 +1,17 @@
+import androidx.compose.material.Text
+import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.runComposeUiTest
 import kotlin.test.Test
-import kotlin.test.assertTrue
 
 class HelloWorldTest {
+    @OptIn(ExperimentalTestApi::class)
     @Test
-    fun printsHello() {
-        assertTrue { Greeting().greet().startsWith("Hello") }
+    fun findsHelloWorld() = runComposeUiTest {
+        setContent {
+            Text("Hello World")
+        }
+
+        onNodeWithText("Hello World").assertExists()
     }
 }
